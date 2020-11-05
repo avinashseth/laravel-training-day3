@@ -2,15 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'UserController@getUsers')->name('get-homepage');
+Route::get('/', 'UserController@getUsers');
 
-// create new user
-Route::get('/new-user', 'UserController@getAddNewUser')->name('get-new-user');
+Route::get('enter-earth/{villian}', 'EarthController@checkVillan')->middleware('avengers');
 
-Route::get('/view-user/{user_id}', 'UserController@getUserDetails')->name('get-user-details');
+Route::get('add-new-lesson', 'LessonController@getAddNewLesson')->name('get-add-new-lesson');
 
-
-Route::get('/update-user/{user_id}', 'UserController@getUpdateUser')
-    ->name('get-update-user');
-
-Route::get('/delete-user/{user_id}', 'UserController@getDeleteUser')->name('get-delete-user');
+Route::post('add-new-lesson', 'LessonController@postAddNewLesson')->name('post-add-new-lesson');
